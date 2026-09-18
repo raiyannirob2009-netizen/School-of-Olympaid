@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Roadmaps — School of Olympiad</title>
+<meta name="description" content="Structured 30/60/90-day and full-year study roadmaps for every STEM olympiad.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10.5' fill='none' stroke='%23A6790A' stroke-width='2'/%3E%3Ccircle cx='16' cy='5.3' r='2.3' fill='%23A6790A'/%3E%3Cpath d='M11 16.6l3.3 3.3 6.6-7.4' fill='none' stroke='%232447B6' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+/* ======================================================================
+   SCHOOL OF OLYMPIAD — DESIGN SYSTEM
+   Signature idea: the interface reads like a well-kept problem set /
+   exam paper crossed with a lab instrument readout — hairline rules,
+   numbered problems with point values, monospace data, restrained color.
+   ====================================================================== */
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ---------- Tokens ---------- */
+:root{
+  /* base palette — light */
+  --bg:#FFFFFF;
+  --bg-dim:#F4F5F7;
+  --bg-sunk:#EAEDF1;
+  --bg-raised:#FFFFFF;
+  --text:#10151F;
+  --text-soft:#3A4152;
+  --text-mute:#6B7385;
+  --line:#DCDFE5;
+  --line-soft:#EBEDF1;
+
+  /* brand accents */
+  --gold:#A6790A;
+  --gold-ink:#7A5A08;
+  --gold-soft:#F6ECD2;
+  --cobalt:#2447B6;
+  --cobalt-ink:#1B368C;
+  --cobalt-soft:#E4E9FB;
+
+  --success:#177A54;
+  --success-soft:#DDF1E7;
+  --danger:#B23B24;
+  --danger-soft:#FBE4DE;
+  --warn:#9A6B0C;
+  --warn-soft:#F7ECD3;
+
+  /* subject accents */
+  --sub-math:#2447B6;
+  --sub-physics:#7A3FA0;
+  --sub-chem:#177A54;
+  --sub-bio:#B23B24;
+  --sub-cs:#0F766E;
+  --sub-astro:#3730A3;
+  --sub-earth:#8A5A22;
+  --sub-eng:#475569;
+  --sub-ai:#B5460C;
+
+  /* type */
+  --font-display:'Fraunces', ui-serif, Georgia, serif;
+  --font-body:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* scale */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px;
+
+  --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-full:999px;
+
+  --shadow-sm:0 1px 2px rgba(16,21,31,0.06);
+  --shadow-md:0 4px 16px rgba(16,21,31,0.08);
+  --shadow-lg:0 12px 40px rgba(16,21,31,0.14);
+
+  --header-h:68px;
+  color-scheme: light;
+}
+
+html[data-theme="dark"]{
+  --bg:#0B1119;
+  --bg-dim:#0F1626;
+  --bg-sunk:#141C2E;
+  --bg-raised:#131B2B;
+  --text:#EAEDF3;
+  --text-soft:#C3C9D6;
+  --text-mute:#8891A3;
+  --line:#232D42;
+  --line-soft:#1B2438;
+
+  --gold:#E0B84A;
+  --gold-ink:#F3D888;
+  --gold-soft:#2C2412;
+  --cobalt:#7C9AF0;
+  --cobalt-ink:#AFC1F5;
+  --cobalt-soft:#161E36;
+
+  --success:#4FCB94;
+  --success-soft:#0F2A20;
+  --danger:#F1806A;
+  --danger-soft:#301711;
+  --warn:#E0B84A;
+  --warn-soft:#2C2412;
+
+  --sub-math:#7C9AF0;
+  --sub-physics:#C79BE8;
+  --sub-chem:#4FCB94;
+  --sub-bio:#F1806A;
+  --sub-cs:#5FD0C4;
+  --sub-astro:#9FA6F5;
+  --sub-earth:#D2A25C;
+  --sub-eng:#9AA6BC;
+  --sub-ai:#F0A06B;
+
+  color-scheme: dark;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  transition:background .2s ease, color .2s ease;
+}
+img,svg{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3,h4{ font-family:var(--font-display); margin:0; font-weight:600; letter-spacing:-0.01em; color:var(--text); }
+p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; }
+:focus-visible{ outline:2px solid var(--cobalt); outline-offset:2px; border-radius:4px; }
+
+.container{ max-width:1240px; margin:0 auto; padding:0 var(--space-5); }
+@media (max-width:640px){ .container{ padding:0 var(--space-4); } }
+
+.eyebrow{
+  font-family:var(--font-mono); font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--text-mute); display:flex; align-items:center; gap:var(--space-2);
+}
+.eyebrow::before{ content:""; width:16px; height:1px; background:var(--gold); display:inline-block; }
+
+.section{ padding:var(--space-8) 0; }
+@media (max-width:640px){ .section{ padding:var(--space-7) 0; } }
+.section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:var(--space-5); margin-bottom:var(--space-6); flex-wrap:wrap; }
+.section-title{ font-size:32px; margin-top:var(--space-2); }
+.section-sub{ color:var(--text-mute); max-width:560px; margin-top:var(--space-2); font-size:15px; }
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:var(--space-2);
+  font-family:var(--font-body); font-weight:600; font-size:14.5px;
+  padding:11px 20px; border-radius:var(--radius-sm); border:1px solid transparent;
+  cursor:pointer; transition:transform .12s ease, box-shadow .12s ease, background .15s ease, border-color .15s ease, color .15s ease;
+  white-space:nowrap;
+}
+.btn:active{ transform:translateY(1px); }
+.btn-primary{ background:var(--text); color:var(--bg); }
+html[data-theme="dark"] .btn-primary{ background:var(--gold); color:#141019; }
+.btn-primary:hover{ box-shadow:var(--shadow-md); }
+.btn-gold{ background:var(--gold); color:#FFFDF8; }
+html[data-theme="dark"] .btn-gold{ color:#1A1408; }
+.btn-gold:hover{ box-shadow:0 6px 20px rgba(166,121,10,.28); }
+.btn-outline{ background:transparent; border-color:var(--line); color:var(--text); }
+.btn-outline:hover{ border-color:var(--text-mute); background:var(--bg-dim); }
+.btn-ghost{ background:transparent; color:var(--text-soft); }
+.btn-ghost:hover{ background:var(--bg-dim); }
+.btn-sm{ padding:7px 14px; font-size:13px; }
+.btn-lg{ padding:14px 26px; font-size:15.5px; }
+.btn-block{ width:100%; }
+.btn[disabled]{ opacity:.5; cursor:not-allowed; }
+.btn-icon{ width:38px; height:38px; padding:0; border-radius:var(--radius-sm); background:transparent; border:1px solid var(--line); color:var(--text-soft); }
+.btn-icon:hover{ background:var(--bg-dim); }
+
+/* ---------- Icons (inline stroke style) ---------- */
+.icon{ width:18px; height:18px; stroke:currentColor; stroke-width:1.8; fill:none; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+
+/* ---------- Cards ---------- */
+.card{
+  background:var(--bg-raised); border:1px solid var(--line); border-radius:var(--radius-md);
+  transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.card-hover:hover{ border-color:var(--text-mute); box-shadow:var(--shadow-md); transform:translateY(-2px); }
+
+/* ---------- Badges & tags ---------- */
+.badge{
+  display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono);
+  font-size:11.5px; letter-spacing:.03em; padding:4px 9px; border-radius:var(--radius-full);
+  border:1px solid var(--line); color:var(--text-soft); background:var(--bg-dim);
+}
+.badge-dot::before{ content:""; width:6px; height:6px; border-radius:50%; background:currentColor; }
+.badge-gold{ background:var(--gold-soft); color:var(--gold-ink); border-color:transparent; }
+.badge-cobalt{ background:var(--cobalt-soft); color:var(--cobalt-ink); border-color:transparent; }
+.badge-success{ background:var(--success-soft); color:var(--success); border-color:transparent; }
+.badge-danger{ background:var(--danger-soft); color:var(--danger); border-color:transparent; }
+.badge-warn{ background:var(--warn-soft); color:var(--warn); border-color:transparent; }
+
+.subject-chip{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:var(--sc); }
+.subject-chip::before{ content:""; width:8px; height:8px; border-radius:2px; background:var(--sc); display:inline-block; }
+.sc-mathematics{ --sc:var(--sub-math); } .sc-physics{ --sc:var(--sub-physics); } .sc-chemistry{ --sc:var(--sub-chem); }
+.sc-biology{ --sc:var(--sub-bio); } .sc-computer-science{ --sc:var(--sub-cs); } .sc-astronomy{ --sc:var(--sub-astro); }
+.sc-earth-science{ --sc:var(--sub-earth); } .sc-engineering{ --sc:var(--sub-eng); } .sc-ai-data-science{ --sc:var(--sub-ai); }
+
+.diff-dots{ display:inline-flex; gap:3px; align-items:center; }
+.diff-dots i{ width:6px; height:6px; border-radius:50%; background:var(--line); display:inline-block; }
+.diff-dots i.on{ background:var(--gold); }
+
+/* ---------- Layout: header / nav ---------- */
+.site-header{
+  position:sticky; top:0; z-index:60; height:var(--header-h);
+  background:color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+}
+.site-header .container{ height:100%; display:flex; align-items:center; justify-content:space-between; gap:var(--space-5); }
+.brand{ display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-weight:600; font-size:19px; flex-shrink:0; }
+.brand-mark{ width:32px; height:32px; }
+.brand small{ display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.16em; color:var(--text-mute); font-weight:500; text-transform:uppercase; margin-top:1px; }
+
+.nav-desktop{ display:flex; align-items:center; gap:2px; }
+.nav-desktop a{ font-size:14px; font-weight:500; color:var(--text-soft); padding:9px 12px; border-radius:var(--radius-sm); white-space:nowrap; }
+.nav-desktop a:hover{ background:var(--bg-dim); color:var(--text); }
+.nav-desktop a.active{ color:var(--text); background:var(--bg-dim); }
+.header-actions{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.header-actions .divider{ width:1px; height:22px; background:var(--line); margin:0 4px; }
+.mobile-toggle{ display:none; }
+
+@media (max-width:1080px){
+  .nav-desktop{ display:none; }
+  .mobile-toggle{ display:inline-flex; }
+  .hide-mobile{ display:none !important; }
+}
+
+/* mobile drawer */
+.mobile-drawer{ position:fixed; inset:0; z-index:90; display:none; }
+.mobile-drawer.open{ display:block; }
+.mobile-drawer .scrim{ position:absolute; inset:0; background:rgba(10,14,22,.5); }
+.mobile-drawer .panel{
+  position:absolute; top:0; right:0; height:100%; width:min(320px,86vw); background:var(--bg);
+  border-left:1px solid var(--line); padding:var(--space-5); overflow-y:auto;
+  display:flex; flex-direction:column; gap:var(--space-2);
+  animation:slideIn .2s ease;
+}
+@keyframes slideIn{ from{ transform:translateX(24px); opacity:0;} to{ transform:translateX(0); opacity:1;} }
+.mobile-drawer a.drawer-link{ display:flex; align-items:center; gap:10px; padding:12px 8px; font-size:15.5px; font-weight:500; border-bottom:1px solid var(--line-soft); }
+
+/* bottom nav (mobile) */
+.bottom-nav{ display:none; }
+@media (max-width:720px){
+  .bottom-nav{
+    display:flex; position:fixed; bottom:0; left:0; right:0; z-index:70; background:var(--bg);
+    border-top:1px solid var(--line); padding:6px var(--space-2) calc(env(safe-area-inset-bottom) + 6px);
+    justify-content:space-around;
+  }
+  .bottom-nav a{ display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10.5px; color:var(--text-mute); font-weight:600; padding:4px 6px; }
+  .bottom-nav a.active{ color:var(--gold); }
+  body{ padding-bottom:64px; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer{ border-top:1px solid var(--line); background:var(--bg-dim); padding:var(--space-8) 0 var(--space-6); margin-top:var(--space-8); }
+.footer-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:var(--space-6); }
+.footer-grid h5{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-mute); margin-bottom:var(--space-3); }
+.footer-grid a{ display:block; padding:5px 0; font-size:14px; color:var(--text-soft); }
+.footer-grid a:hover{ color:var(--text); }
+.footer-bottom{ display:flex; justify-content:space-between; align-items:center; margin-top:var(--space-7); padding-top:var(--space-5); border-top:1px solid var(--line); font-size:13px; color:var(--text-mute); flex-wrap:wrap; gap:12px; }
+@media (max-width:820px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+
+/* ---------- Hero grid-paper texture ---------- */
+.paper-grid{
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:34px 34px;
+}
+
+/* ---------- Problem card (question / practice / test signature component) ---------- */
+.problem-card{
+  border:1px solid var(--line); border-left:3px solid var(--sc,var(--gold)); border-radius:var(--radius-md);
+  background:var(--bg-raised); padding:var(--space-5); display:flex; flex-direction:column; gap:var(--space-3);
+}
+.problem-card .p-head{ display:flex; align-items:center; justify-content:space-between; gap:var(--space-3); }
+.problem-card .p-id{ font-family:var(--font-mono); font-size:12px; color:var(--text-mute); }
+.problem-card .p-title{ font-size:16.5px; font-weight:600; line-height:1.4; }
+.problem-card .p-meta{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; font-size:12.5px; color:var(--text-mute); }
+.problem-card .p-points{ font-family:var(--font-mono); font-size:12px; color:var(--gold-ink); background:var(--gold-soft); padding:2px 8px; border-radius:var(--radius-full); }
+
+/* ---------- Stat strip / scoreboard (signature) ---------- */
+.scoreboard{ display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; background:var(--bg-raised); }
+.scoreboard .stat{ padding:var(--space-5) var(--space-4); border-right:1px solid var(--line-soft); }
+.scoreboard .stat:last-child{ border-right:none; }
+.scoreboard .stat .num{ font-family:var(--font-mono); font-size:26px; font-weight:600; letter-spacing:-0.01em; }
+.scoreboard .stat .lbl{ font-size:12px; color:var(--text-mute); margin-top:4px; }
+@media (max-width:720px){ .scoreboard{ grid-template-columns:repeat(2,1fr);} .scoreboard .stat:nth-child(2n){ border-right:none; } }
+
+/* ---------- Forms ---------- */
+.field{ display:flex; flex-direction:column; gap:6px; }
+.field label{ font-size:13px; font-weight:600; color:var(--text-soft); }
+.field .hint{ font-size:12px; color:var(--text-mute); }
+input[type=text],input[type=email],input[type=password],input[type=search],input[type=number],input[type=date],select,textarea{
+  font-family:var(--font-body); font-size:14.5px; padding:11px 13px; border-radius:var(--radius-sm);
+  border:1px solid var(--line); background:var(--bg); color:var(--text); width:100%;
+}
+input:focus,select:focus,textarea:focus{ outline:none; border-color:var(--cobalt); box-shadow:0 0 0 3px var(--cobalt-soft); }
+textarea{ resize:vertical; min-height:110px; font-family:var(--font-body); }
+.checkbox-row{ display:flex; align-items:center; gap:8px; font-size:14px; }
+
+.select-pill{ display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:var(--radius-full); border:1px solid var(--line); font-size:13px; font-weight:500; cursor:pointer; background:var(--bg-raised); color:var(--text-soft); }
+.select-pill.active{ background:var(--text); color:var(--bg); border-color:var(--text); }
+html[data-theme="dark"] .select-pill.active{ background:var(--gold); color:#141019; border-color:var(--gold); }
+.pill-row{ display:flex; flex-wrap:wrap; gap:8px; }
+
+/* ---------- Tabs ---------- */
+.tabs{ display:flex; gap:2px; border-bottom:1px solid var(--line); overflow-x:auto; }
+.tab{ padding:11px 16px; font-size:14px; font-weight:600; color:var(--text-mute); border-bottom:2px solid transparent; white-space:nowrap; cursor:pointer; }
+.tab.active{ color:var(--text); border-color:var(--gold); }
+
+/* ---------- Accordion ---------- */
+.accordion-item{ border-bottom:1px solid var(--line); }
+.accordion-trigger{ width:100%; text-align:left; background:none; border:none; padding:18px 4px; display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer; font-size:15.5px; font-weight:600; color:var(--text); }
+.accordion-trigger .chev{ transition:transform .2s ease; flex-shrink:0; color:var(--text-mute); }
+.accordion-item.open .chev{ transform:rotate(45deg); }
+.accordion-panel{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
+.accordion-item.open .accordion-panel{ max-height:600px; }
+.accordion-panel-inner{ padding:0 4px 18px; color:var(--text-soft); font-size:14.5px; line-height:1.65; }
+
+/* ---------- Progress ---------- */
+.progress{ height:8px; border-radius:var(--radius-full); background:var(--bg-sunk); overflow:hidden; }
+.progress > span{ display:block; height:100%; background:var(--gold); border-radius:var(--radius-full); transition:width .3s ease; }
+.progress.cobalt > span{ background:var(--cobalt); }
+.progress.success > span{ background:var(--success); }
+
+/* ---------- Table ---------- */
+.data-table{ width:100%; border-collapse:collapse; font-size:14px; }
+.data-table th{ text-align:left; font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-mute); padding:10px 12px; border-bottom:1px solid var(--line); }
+.data-table td{ padding:12px; border-bottom:1px solid var(--line-soft); }
+.data-table tr:hover td{ background:var(--bg-dim); }
+
+/* ---------- Toast ---------- */
+.toast-wrap{ position:fixed; bottom:20px; right:20px; z-index:200; display:flex; flex-direction:column; gap:10px; }
+@media (max-width:720px){ .toast-wrap{ bottom:76px; right:12px; left:12px; } }
+.toast{ background:var(--text); color:var(--bg); padding:13px 18px; border-radius:var(--radius-sm); font-size:14px; font-weight:500; box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:10px; animation:toastIn .18s ease; }
+html[data-theme="dark"] .toast{ background:var(--bg-raised); border:1px solid var(--line); color:var(--text); }
+@keyframes toastIn{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
+
+/* ---------- Skeleton ---------- */
+.skel{ background:linear-gradient(90deg,var(--bg-sunk) 25%,var(--bg-dim) 37%,var(--bg-sunk) 63%); background-size:400% 100%; animation:skel 1.4s ease infinite; border-radius:var(--radius-sm); }
+@keyframes skel{ 0%{ background-position:100% 50%;} 100%{ background-position:0 50%;} }
+
+/* ---------- Empty / error state ---------- */
+.empty-state{ text-align:center; padding:var(--space-8) var(--space-4); color:var(--text-mute); }
+.empty-state .icon{ width:36px; height:36px; margin:0 auto var(--space-4); color:var(--text-mute); }
+.empty-state h3{ color:var(--text); font-size:18px; margin-bottom:6px; }
+.empty-state p{ font-size:14px; max-width:360px; margin:0 auto; }
+
+/* ---------- Modal / drawer ---------- */
+.modal-scrim{ position:fixed; inset:0; background:rgba(10,14,22,.5); z-index:150; display:none; align-items:center; justify-content:center; padding:20px; }
+.modal-scrim.open{ display:flex; }
+.modal-box{ background:var(--bg); border:1px solid var(--line); border-radius:var(--radius-lg); max-width:460px; width:100%; padding:var(--space-6); box-shadow:var(--shadow-lg); animation:modalIn .18s ease; }
+@keyframes modalIn{ from{ opacity:0; transform:scale(.97) translateY(6px);} to{ opacity:1; transform:scale(1) translateY(0);} }
+
+/* ---------- Avatar ---------- */
+.avatar{ border-radius:50%; background:var(--cobalt-soft); color:var(--cobalt-ink); display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-mono); flex-shrink:0; }
+
+/* ---------- Utility ---------- */
+.flex{ display:flex; } .items-center{ align-items:center; } .justify-between{ justify-content:space-between; }
+.gap-1{gap:4px;} .gap-2{gap:8px;} .gap-3{gap:12px;} .gap-4{gap:16px;} .gap-5{gap:24px;}
+.mt-2{margin-top:8px;} .mt-3{margin-top:12px;} .mt-4{margin-top:16px;} .mt-5{margin-top:24px;} .mt-6{margin-top:32px;} .mt-8{margin-top:64px;}
+.mb-2{margin-bottom:8px;} .mb-3{margin-bottom:12px;} .mb-4{margin-bottom:16px;} .mb-5{margin-bottom:24px;}
+.text-mute{ color:var(--text-mute); } .text-soft{ color:var(--text-soft); } .text-sm{ font-size:13px; } .text-xs{ font-size:11.5px; }
+.font-mono{ font-family:var(--font-mono); }
+.grid{ display:grid; gap:var(--space-5); }
+.grid-2{ grid-template-columns:repeat(2,1fr); } .grid-3{ grid-template-columns:repeat(3,1fr); } .grid-4{ grid-template-columns:repeat(4,1fr); }
+@media (max-width:980px){ .grid-4{ grid-template-columns:repeat(2,1fr);} .grid-3{ grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; } }
+.fade-up{ animation:fadeUp .5s ease both; }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+.hidden{ display:none !important; }
+.page-hero{ padding:var(--space-8) 0 var(--space-6); border-bottom:1px solid var(--line); }
+.breadcrumb{ font-size:13px; color:var(--text-mute); display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+.breadcrumb a:hover{ color:var(--text); }
+.divider-h{ height:1px; background:var(--line); border:none; margin:var(--space-6) 0; }
+.kicker-num{ font-family:var(--font-mono); color:var(--gold); font-weight:600; }
+
+</style>
+<style>
+  .rm-card{ padding:var(--space-5); display:flex; flex-direction:column; gap:12px; }
+  .rm-card h3{ font-size:17px; }
+  .rm-card p{ font-size:13.5px; color:var(--text-mute); line-height:1.6; flex:1; }
+  .rm-milestones{ display:flex; flex-direction:column; gap:6px; }
+  .rm-milestones div{ font-size:12px; color:var(--text-mute); display:flex; gap:8px; align-items:center; }
+  .rm-milestones div::before{ content:""; width:5px; height:5px; border-radius:50%; background:var(--line); flex-shrink:0; }
+</style>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Roadmaps</span></div>
+      <div class="eyebrow mt-3">Structured paths</div>
+      <h1 class="section-title mt-2">Study roadmaps for real deadlines</h1>
+      <p class="section-sub mt-2">Beginner-to-olympiad tracks, short sprints, and full-year competition-specific plans. Mark milestones complete as you go.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:var(--space-6);">
+    <div class="container">
+      <div class="pill-row mb-6" id="rm-filter"></div>
+      <div class="grid grid-3" id="rm-grid"></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script>
+/* ======================================================================
+   SCHOOL OF OLYMPIAD — MOCK DATA LAYER
+   Structured to mirror a real relational schema (see /about#data-model
+   in the build notes). Swap this file for API calls when a backend is
+   connected — every page reads exclusively through the SOO.* accessors.
+   ====================================================================== */
+
+const SOO_SUBJECTS = [
+  { slug:"mathematics", name:"Mathematics", short:"Math", icon:"sigma", color:"var(--sub-math)",
+    desc:"Algebra, number theory, geometry and combinatorics for olympiad-style proof and problem solving.",
+    topics:["Algebra","Number Theory","Geometry","Combinatorics","Inequalities","Functional Equations","Probability","Mathematical Proof","Advanced Problem Solving"],
+    questionCount:2140, competitionCount:14 },
+  { slug:"physics", name:"Physics", short:"Physics", icon:"atom", color:"var(--sub-physics)",
+    desc:"Mechanics through modern physics, with a strong emphasis on experimental reasoning.",
+    topics:["Mechanics","Electricity","Magnetism","Thermodynamics","Waves","Optics","Modern Physics","Relativity","Experimental Physics","Mathematical Methods"],
+    questionCount:1870, competitionCount:11 },
+  { slug:"chemistry", name:"Chemistry", short:"Chem", icon:"flask", color:"var(--sub-chem)",
+    desc:"From reaction mechanisms to spectroscopy, chemical equilibrium and electrochemistry.",
+    topics:["General Chemistry","Organic Chemistry","Inorganic Chemistry","Physical Chemistry","Analytical Chemistry","Biochemistry","Spectroscopy","Thermodynamics","Chemical Equilibrium","Electrochemistry"],
+    questionCount:1610, competitionCount:9 },
+  { slug:"biology", name:"Biology", short:"Bio", icon:"leaf", color:"var(--sub-bio)",
+    desc:"Cell and molecular biology, genetics, physiology and ecology with lab-based reasoning.",
+    topics:["Cell Biology","Molecular Biology","Genetics","Evolution","Ecology","Physiology","Biochemistry","Botany","Zoology","Experimental Biology"],
+    questionCount:1930, competitionCount:10 },
+  { slug:"computer-science", name:"Computer Science", short:"CS", icon:"code", color:"var(--sub-cs)",
+    desc:"Algorithms, data structures and competitive programming, judged on real test cases.",
+    topics:["Algorithms","Data Structures","Dynamic Programming","Graph Theory","Number Algorithms","Geometry","Strings","Greedy Algorithms","Computational Mathematics","Complexity"],
+    questionCount:1480, competitionCount:8 },
+  { slug:"astronomy", name:"Astronomy", short:"Astro", icon:"star", color:"var(--sub-astro)",
+    desc:"Astrophysics, celestial mechanics and observational astronomy for IOAA-style prep.",
+    topics:["Astrophysics","Celestial Mechanics","Stars","Galaxies","Cosmology","Observational Astronomy","Planetary Science","Space Physics"],
+    questionCount:740, competitionCount:6 },
+  { slug:"earth-science", name:"Earth Science", short:"Earth", icon:"globe", color:"var(--sub-earth)",
+    desc:"Geology, meteorology, oceanography and climate systems for IESO-style prep.",
+    topics:["Geology","Meteorology","Oceanography","Environmental Science","Earth Systems","Geophysics","Climate Science"],
+    questionCount:520, competitionCount:5 },
+  { slug:"engineering", name:"Engineering & Robotics", short:"Eng", icon:"gear", color:"var(--sub-eng)",
+    desc:"Electronics, control systems, robotics and applied design for build-based competitions.",
+    topics:["Electronics","Mechanical Design","Control Systems","Robotics","Circuits","Sensors","CAD","Automation","Engineering Design"],
+    questionCount:410, competitionCount:7 },
+  { slug:"ai-data-science", name:"AI & Data Science", short:"AI", icon:"cpu", color:"var(--sub-ai)",
+    desc:"Machine learning, statistics and applied data analysis for research-style challenges.",
+    topics:["Machine Learning","Data Analysis","Statistics","Computer Vision","NLP","AI Algorithms"],
+    questionCount:365, competitionCount:4 },
+];
+
+const SOO_COMPETITIONS = [
+  { slug:"imo", name:"International Mathematical Olympiad", short:"IMO", subject:"mathematics", organizer:"IMO Board", country:"International", type:"International", format:"Individual", age:"Grades 9–12", difficulty:5, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"The oldest and most prestigious international mathematics competition for pre-university students, held annually since 1959.",
+    stages:["School round","National olympiad","National team selection","International olympiad"], months:"July", editions:65 },
+  { slug:"egmo", name:"European Girls' Mathematical Olympiad", short:"EGMO", subject:"mathematics", organizer:"EGMO Committee", country:"Europe", type:"International", format:"Individual", age:"Grades 9–12", difficulty:5, online:false, category:"Exam", regStatus:"Nominations open",
+    desc:"An international mathematical olympiad for girls, designed to encourage participation of young women in competition mathematics.",
+    stages:["National selection","International olympiad"], months:"April", editions:14 },
+  { slug:"ipho", name:"International Physics Olympiad", short:"IPhO", subject:"physics", organizer:"IPhO Board", country:"International", type:"International", format:"Individual", age:"Secondary school", difficulty:5, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"A theoretical and experimental physics competition bringing together the strongest pre-university physicists worldwide.",
+    stages:["National olympiad","National camp","International olympiad"], months:"July", editions:55 },
+  { slug:"icho", name:"International Chemistry Olympiad", short:"IChO", subject:"chemistry", organizer:"IChO Steering Committee", country:"International", type:"International", format:"Individual", age:"Secondary school", difficulty:5, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"A theoretical and practical laboratory examination testing chemistry knowledge at the highest pre-university level.",
+    stages:["National selection","National camp","International olympiad"], months:"July", editions:57 },
+  { slug:"ibo", name:"International Biology Olympiad", short:"IBO", subject:"biology", organizer:"IBO International Board", country:"International", type:"International", format:"Individual", age:"Secondary school", difficulty:5, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"Theoretical and practical biology examinations spanning cell biology, genetics, physiology, ecology and evolution.",
+    stages:["National olympiad","National camp","International olympiad"], months:"July", editions:36 },
+  { slug:"ioi", name:"International Olympiad in Informatics", short:"IOI", subject:"computer-science", organizer:"IOI Host Country", country:"International", type:"International", format:"Individual", age:"Secondary school", difficulty:5, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"The premier competitive programming olympiad, testing algorithmic problem-solving through timed contest submissions.",
+    stages:["National selection","Training camp","International olympiad"], months:"August", editions:37 },
+  { slug:"ioaa", name:"International Olympiad on Astronomy and Astrophysics", short:"IOAA", subject:"astronomy", organizer:"IOAA Board", country:"International", type:"International", format:"Individual", age:"Secondary school", difficulty:4, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"Theoretical, data-analysis and observational rounds covering astrophysics and celestial mechanics.",
+    stages:["National selection","International olympiad"], months:"August", editions:18 },
+  { slug:"ieso", name:"International Earth Science Olympiad", short:"IESO", subject:"earth-science", organizer:"IESO Board", country:"International", type:"International", format:"Team", age:"Secondary school", difficulty:4, online:false, category:"Exam", regStatus:"Selection ongoing",
+    desc:"Earth-system science competition combining written tests, practical exercises and team fieldwork investigations.",
+    stages:["National selection","International olympiad"], months:"August", editions:17 },
+  { slug:"usamo", name:"USA Mathematical Olympiad", short:"USAMO", subject:"mathematics", organizer:"MAA", country:"United States", type:"National", format:"Individual", age:"Grades 9–12", difficulty:5, online:false, category:"Exam", regStatus:"By qualification (AIME)",
+    desc:"A six-problem proof-based exam that determines the US IMO team, reached via AMC and AIME qualification.",
+    stages:["AMC","AIME","USAMO","MOP selection"], months:"March", editions:54 },
+  { slug:"bpho", name:"British Physics Olympiad", short:"BPhO", subject:"physics", organizer:"BPhO Committee", country:"United Kingdom", type:"National", format:"Individual", age:"Sixth form", difficulty:4, online:false, category:"Exam", regStatus:"Registration open",
+    desc:"A national physics competition series used to select the UK team for the International Physics Olympiad.",
+    stages:["BPhO Round 1","BPhO Round 2","Camp selection","IPhO team"], months:"November–March", editions:41 },
+  { slug:"frc", name:"FIRST Robotics Competition", short:"FRC", subject:"engineering", organizer:"FIRST", country:"International", type:"International", format:"Team", age:"Grades 9–12", difficulty:4, online:false, category:"Robotics", regStatus:"Season open",
+    desc:"A season-long build competition where teams design, build and program robots to complete a themed game.",
+    stages:["Kickoff","Build season","Regional events","Championship"], months:"January–April", editions:35 },
+  { slug:"isef", name:"International Science and Engineering Fair", short:"ISEF", subject:"ai-data-science", organizer:"Society for Science", country:"International", type:"International", format:"Individual/Team", age:"Grades 9–12", difficulty:4, online:false, category:"Research", regStatus:"Affiliated fair qualification",
+    desc:"The world's largest pre-college science research competition, spanning every STEM discipline.",
+    stages:["School fair","Regional/affiliated fair","ISEF"], months:"May", editions:75 },
+  { slug:"nacloly", name:"National Chemistry Olympiad", short:"NChO", subject:"chemistry", organizer:"National Chemical Society", country:"National (varies)", type:"National", format:"Individual", age:"Secondary school", difficulty:4, online:false, category:"Exam", regStatus:"Registration open",
+    desc:"A national qualifying exam series feeding into IChO team selection camps.",
+    stages:["Local round","National round","Camp selection"], months:"February", editions:29 },
+  { slug:"codeforces-global", name:"Codeforces Global Rounds", short:"CF Global", subject:"computer-science", organizer:"Codeforces", country:"Online / Global", type:"International", format:"Individual", age:"Open", difficulty:3, online:true, category:"Coding", regStatus:"Rolling — monthly rounds",
+    desc:"Frequent online competitive programming rounds used by olympiad students worldwide for rating-based practice.",
+    stages:["Registration","Live round","Rating update"], months:"Monthly", editions:220 },
+];
+
+const SOO_QUESTIONS = [
+  { id:"MATH-1042", subject:"mathematics", topic:"Number Theory", competition:"imo", year:2023, difficulty:5, points:7, type:"Proof", time:45, solved:38,
+    title:"Prove that for positive integers a, b, the expression gcd(a,b)·lcm(a,b) equals a·b, and use it to bound solutions of a Diophantine equation.",
+    stem:"Let $a, b$ be positive integers. Prove that $\\gcd(a,b)\\cdot\\mathrm{lcm}(a,b) = ab$, and hence determine all pairs $(a,b)$ with $a+b=48$ and $\\gcd(a,b)=6$.",
+    hint:"Write $a=6x$, $b=6y$ with $\\gcd(x,y)=1$ and substitute into the sum condition.",
+    solution:"Since $\\gcd(a,b)\\cdot\\mathrm{lcm}(a,b)=ab$ follows from prime-factorisation exponents, write $a=6x,\\,b=6y$ with $\\gcd(x,y)=1$. Then $6x+6y=48 \\Rightarrow x+y=8$ with $\\gcd(x,y)=1$, giving pairs $(1,7),(3,5),(5,3),(7,1)$, so $(a,b)\\in\\{(6,42),(18,30),(30,18),(42,6)\\}$.",
+    concepts:["GCD/LCM identity","Diophantine substitution","Coprimality"] },
+  { id:"MATH-0871", subject:"mathematics", topic:"Geometry", competition:"egmo", year:2022, difficulty:4, points:6, type:"Proof", time:40, solved:44,
+    title:"Show that the diagonals of a cyclic quadrilateral with perpendicular diagonals satisfy a sum-of-squares identity.",
+    stem:"Let $ABCD$ be a cyclic quadrilateral whose diagonals meet at right angles at $P$. Prove that $AP^2+BP^2+CP^2+DP^2 = AB^2+CD^2$ is equivalent to a known circle-power identity, and verify it for a specific inscribed square.",
+    hint:"Apply the Pythagorean theorem in each of the four right triangles formed at $P$.",
+    solution:"Each side satisfies e.g. $AB^2 = AP^2+BP^2$, so summing opposite sides recovers the target identity directly from the four right triangles at $P$.",
+    concepts:["Cyclic quadrilaterals","Perpendicular diagonals","Pythagorean decomposition"] },
+  { id:"PHYS-2210", subject:"physics", topic:"Mechanics", competition:"ipho", year:2023, difficulty:4, points:10, type:"Numerical", time:35, solved:51,
+    title:"A uniform rod pivoted at one end is released from horizontal — find the angular velocity at the vertical position.",
+    stem:"A uniform rod of length $L$ and mass $m$ is pivoted at one end and released from rest in the horizontal position. Using energy conservation, find its angular velocity $\\omega$ when it passes through the vertical position.",
+    hint:"The moment of inertia of a rod about its end is $\\tfrac{1}{3}mL^2$; equate loss in potential energy to rotational kinetic energy.",
+    solution:"Energy conservation gives $mg\\frac{L}{2} = \\frac12\\left(\\frac13 mL^2\\right)\\omega^2$, so $\\omega=\\sqrt{\\dfrac{3g}{L}}$.",
+    concepts:["Rotational kinetic energy","Moment of inertia","Energy conservation"] },
+  { id:"PHYS-1904", subject:"physics", topic:"Electricity", competition:"bpho", year:2021, difficulty:3, points:8, type:"Numerical", time:25, solved:63,
+    title:"Determine the equivalent resistance of a symmetric resistor cube network between two opposite corners.",
+    stem:"Twelve equal resistors of resistance $R$ form the edges of a cube. Find the equivalent resistance between two diagonally opposite corners of the cube.",
+    hint:"Use the symmetry of current distribution to identify nodes at equal potential.",
+    solution:"By symmetry, the equivalent resistance between opposite corners of a resistor cube is $R_{eq}=\\dfrac{5R}{6}$.",
+    concepts:["Circuit symmetry","Equivalent resistance","Kirchhoff's laws"] },
+  { id:"CHEM-1330", subject:"chemistry", topic:"Chemical Equilibrium", competition:"icho", year:2022, difficulty:4, points:9, type:"Numerical", time:30, solved:47,
+    title:"Calculate the equilibrium pH of a buffer after addition of a strong base, using the Henderson–Hasselbalch relation.",
+    stem:"A buffer contains 0.30 mol acetic acid ($K_a=1.8\\times10^{-5}$) and 0.20 mol sodium acetate in 1 L. Calculate the pH after 0.05 mol NaOH is added, assuming negligible volume change.",
+    hint:"NaOH consumes acetic acid and produces acetate in a 1:1 ratio before applying Henderson–Hasselbalch.",
+    solution:"After reaction: acid $=0.25$ mol, acetate $=0.25$ mol. $\\mathrm{pH}=pK_a+\\log(1)=4.74$.",
+    concepts:["Buffer chemistry","Henderson–Hasselbalch","Acid–base neutralisation"] },
+  { id:"CHEM-0765", subject:"chemistry", topic:"Organic Chemistry", competition:"nacloly", year:2023, difficulty:3, points:6, type:"Multiple Choice", time:15, solved:71,
+    title:"Identify the major product of an E2 elimination on a substituted cyclohexane under strong, bulky base conditions.",
+    stem:"Which alkene is the major product when 1-bromo-4-tert-butylcyclohexane is treated with potassium tert-butoxide?",
+    hint:"A bulky base favours the Hofmann (less substituted) product and anti-periplanar geometry governs which chair conformer reacts.",
+    solution:"The bulky base favours the less-hindered, anti-periplanar elimination pathway, giving the Hofmann alkene as the major product.",
+    concepts:["E2 elimination","Hofmann vs Zaitsev","Conformational analysis"] },
+  { id:"BIO-1587", subject:"biology", topic:"Genetics", competition:"ibo", year:2022, difficulty:4, points:8, type:"Numerical", time:25, solved:55,
+    title:"Predict offspring genotype ratios from a dihybrid cross involving linked genes with known recombination frequency.",
+    stem:"Two genes are 20 map units apart on the same chromosome. For a dihybrid cross $AaBb \\times aabb$, what fraction of offspring are expected to be recombinant?",
+    hint:"Map distance in centimorgans directly gives the percentage of recombinant gametes.",
+    solution:"A map distance of 20 cM corresponds to 20% recombinant gametes, so 20% of offspring are recombinant phenotypes.",
+    concepts:["Genetic linkage","Recombination frequency","Test cross analysis"] },
+  { id:"BIO-0942", subject:"biology", topic:"Cell Biology", competition:"ibo", year:2021, difficulty:3, points:5, type:"Multiple Select", time:12, solved:68,
+    title:"Select all organelles directly involved in the secretory pathway of a eukaryotic cell.",
+    stem:"Which of the following are part of the classical secretory pathway? (Select all that apply.)",
+    hint:"Trace the path a secreted protein takes from synthesis to exocytosis.",
+    solution:"Rough ER, Golgi apparatus and secretory vesicles are all part of the secretory pathway; the nucleolus and peroxisome are not.",
+    concepts:["Endomembrane system","Protein trafficking","Organelle function"] },
+  { id:"CS-2201", subject:"computer-science", topic:"Dynamic Programming", competition:"ioi", year:2023, difficulty:5, points:100, type:"Coding", time:60, solved:22,
+    title:"Given a sequence of task durations and deadlines, compute the minimum total lateness using interval DP.",
+    stem:"You are given $n$ tasks, each with a duration $d_i$ and deadline $t_i$. Tasks must be scheduled sequentially without overlap. Write a program that outputs the minimum total lateness (sum of max(0, completion − deadline)) across all tasks.",
+    hint:"Sort by deadline first — this problem reduces to a classic greedy-with-DP-verification scheduling pattern.",
+    solution:"Sorting tasks by deadline and applying an exchange-argument greedy schedule minimises total lateness; verify optimality with a DP over subsets for small $n$ and greedy for large $n$.",
+    concepts:["Interval scheduling","Greedy exchange argument","Dynamic programming"] },
+  { id:"CS-1765", subject:"computer-science", topic:"Graph Theory", competition:"codeforces-global", year:2024, difficulty:3, points:1900, type:"Coding", time:30, solved:64,
+    title:"Determine whether a directed graph contains a cycle using iterative DFS with explicit recursion stack tracking.",
+    stem:"Given a directed graph with $n$ nodes and $m$ edges, write a program that determines whether the graph contains a cycle.",
+    hint:"Track three states per node: unvisited, in the current DFS stack, and fully processed.",
+    solution:"A three-colour DFS (white/grey/black) detects a back edge into a grey node, which certifies a cycle; run DFS from all unvisited nodes.",
+    concepts:["Graph traversal","Cycle detection","DFS state tracking"] },
+  { id:"ASTRO-0410", subject:"astronomy", topic:"Celestial Mechanics", competition:"ioaa", year:2022, difficulty:4, points:8, type:"Numerical", time:30, solved:41,
+    title:"Use Kepler's third law to determine the orbital period of an exoplanet from its semi-major axis and host star mass.",
+    stem:"An exoplanet orbits a star of mass $1.2\\,M_\\odot$ at a semi-major axis of $2.0$ AU. Find its orbital period in years.",
+    hint:"Kepler's third law in solar units: $T^2 = a^3/M_\\star$ with $T$ in years, $a$ in AU, $M_\\star$ in solar masses.",
+    solution:"$T^2 = \\dfrac{a^3}{M_\\star} = \\dfrac{8}{1.2}=6.67 \\Rightarrow T \\approx 2.58$ years.",
+    concepts:["Kepler's third law","Orbital dynamics","Unit systems in astronomy"] },
+  { id:"EARTH-0212", subject:"earth-science", topic:"Meteorology", competition:"ieso", year:2023, difficulty:3, points:6, type:"Short Answer", time:20, solved:58,
+    title:"Explain why the adiabatic lapse rate differs between dry and saturated air parcels.",
+    stem:"Explain, using the concept of latent heat release, why the saturated (moist) adiabatic lapse rate is smaller in magnitude than the dry adiabatic lapse rate.",
+    hint:"Condensation releases latent heat that partially offsets the cooling due to expansion.",
+    solution:"As a saturated parcel rises and cools, water vapour condenses and releases latent heat, which offsets some of the adiabatic cooling — so the moist lapse rate is smaller in magnitude than the dry rate (~9.8°C/km).",
+    concepts:["Adiabatic processes","Latent heat","Atmospheric stability"] },
+  { id:"ENG-0188", subject:"engineering", topic:"Control Systems", competition:"frc", year:2023, difficulty:3, points:7, type:"Short Answer", time:20, solved:49,
+    title:"Design a simple PID control loop for a drivetrain motor targeting a set encoder position.",
+    stem:"A robot drivetrain uses a PID controller to reach a target encoder position. Describe the effect of increasing the derivative gain $K_d$ on overshoot and settling time.",
+    hint:"Derivative action responds to the rate of change of error, damping oscillation.",
+    solution:"Increasing $K_d$ adds damping proportional to the rate of change of error, which typically reduces overshoot and can shorten settling time — until excessive $K_d$ amplifies sensor noise and destabilises the loop.",
+    concepts:["PID control","System damping","Sensor noise sensitivity"] },
+  { id:"AI-0099", subject:"ai-data-science", topic:"Machine Learning", competition:"isef", year:2023, difficulty:3, points:6, type:"Multiple Choice", time:15, solved:66,
+    title:"Identify the effect of increasing regularization strength on model bias and variance.",
+    stem:"As the regularization strength $\\lambda$ in ridge regression increases from 0, what typically happens to model bias and variance?",
+    hint:"Regularization shrinks coefficients toward zero, simplifying the model.",
+    solution:"Increasing $\\lambda$ shrinks coefficients toward zero, which increases bias but decreases variance — a classic bias–variance trade-off.",
+    concepts:["Regularization","Bias–variance trade-off","Ridge regression"] },
+  { id:"MATH-1188", subject:"mathematics", topic:"Combinatorics", competition:"usamo", year:2022, difficulty:5, points:7, type:"Proof", time:45, solved:29,
+    title:"Prove a counting identity for lattice paths avoiding a diagonal using a reflection argument.",
+    stem:"Prove that the number of lattice paths from $(0,0)$ to $(n,n)$ using unit right/up steps that never rise above the diagonal $y=x$ is the $n$th Catalan number.",
+    hint:"Use the reflection principle: reflect any path that first touches $y=x+1$ across that line.",
+    solution:"Reflecting invalid paths at their first touch of $y=x+1$ maps them bijectively onto all paths to $(n-1,n+1)$, giving $\\binom{2n}{n}-\\binom{2n}{n-1}=C_n$ valid paths.",
+    concepts:["Reflection principle","Catalan numbers","Bijective counting"] },
+  { id:"PHYS-0733", subject:"physics", topic:"Thermodynamics", competition:"ipho", year:2021, difficulty:4, points:9, type:"Numerical", time:30, solved:46,
+    title:"Compute the efficiency of a Carnot engine operating between two given reservoir temperatures.",
+    stem:"A Carnot engine operates between a hot reservoir at 600 K and a cold reservoir at 300 K. Find its theoretical efficiency, and the work output per cycle if it absorbs 800 J of heat from the hot reservoir.",
+    hint:"Carnot efficiency depends only on the ratio of absolute reservoir temperatures.",
+    solution:"$\\eta = 1-\\dfrac{T_C}{T_H}=1-\\dfrac{300}{600}=0.5$, so work output $=0.5\\times800\\text{ J}=400$ J.",
+    concepts:["Carnot efficiency","Second law of thermodynamics","Heat engines"] },
+  { id:"BIO-1120", subject:"biology", topic:"Ecology", competition:"ibo", year:2023, difficulty:3, points:6, type:"Numerical", time:20, solved:60,
+    title:"Estimate population size using the Lincoln–Petersen mark-recapture method.",
+    stem:"In a mark-recapture study, 40 fish are captured, tagged and released. Later, 50 fish are captured, of which 8 are tagged. Estimate the total population size.",
+    hint:"Apply the Lincoln–Petersen estimator: $N \\approx \\dfrac{M \\times C}{R}$.",
+    solution:"$N \\approx \\dfrac{40\\times50}{8}=250$ fish.",
+    concepts:["Mark-recapture","Population estimation","Sampling assumptions"] },
+  { id:"CHEM-1904", subject:"chemistry", topic:"Electrochemistry", competition:"icho", year:2021, difficulty:4, points:8, type:"Numerical", time:25, solved:39,
+    title:"Determine cell potential and spontaneity from standard reduction potentials of a galvanic cell.",
+    stem:"A galvanic cell is built from $Zn^{2+}/Zn$ ($E^\\circ=-0.76$ V) and $Cu^{2+}/Cu$ ($E^\\circ=+0.34$ V) half-cells. Calculate the standard cell potential and state whether the reaction is spontaneous.",
+    hint:"$E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode}$, with the more positive potential acting as cathode.",
+    solution:"$E^\\circ_{cell} = 0.34-(-0.76)=1.10$ V $>0$, so the reaction is spontaneous under standard conditions.",
+    concepts:["Standard reduction potential","Galvanic cells","Spontaneity (ΔG vs E°)"] },
+  { id:"CS-1420", subject:"computer-science", topic:"Data Structures", competition:"ioi", year:2022, difficulty:4, points:100, type:"Coding", time:45, solved:33,
+    title:"Support range-sum queries and point updates on an array using a Fenwick tree (Binary Indexed Tree).",
+    stem:"Implement a data structure that supports point updates and prefix-sum queries on an array of size $n$ in $O(\\log n)$ time each.",
+    hint:"A Fenwick tree stores partial sums at indices determined by the lowest set bit.",
+    solution:"Maintain an array `bit[]` where `bit[i]` covers a range determined by `i & -i`; update by repeatedly adding `i & -i`, and query by repeatedly subtracting `i & -i`.",
+    concepts:["Fenwick tree","Prefix sums","Bit manipulation"] },
+];
+
+const SOO_ARTICLES = [
+  { slug:"why-timed-practice-matters", title:"Why Timed Practice Changes How You Solve", subject:"mathematics", category:"Exam Strategy", author:"Editorial Team", date:"2026-06-02", readTime:6,
+    excerpt:"Working without a clock teaches you to solve problems. Working against one teaches you to finish them — here's how to build that muscle deliberately.",
+    body:["Most students first learn a subject untimed: read, think, retry, look things up. That's the right way to build understanding. But an olympiad exam rewards a second, different skill — deciding quickly which of six problems to attack first, and when to abandon a dead end.","Timed practice exposes a gap that untimed practice hides. You may be able to solve a problem in twenty minutes with no pressure, then freeze completely with a clock running. The fix isn't to grind more untimed problems — it's to practice the specific skill of triage under a visible timer, on problems slightly below your ceiling difficulty.","Start with sessions half the length of the real exam, using problems you've mostly seen the topic of. Gradually increase both the difficulty and the fraction of unfamiliar problems as your triage instinct improves."] },
+  { slug:"structuring-a-90-day-plan", title:"Structuring a 90-Day Olympiad Preparation Plan", subject:"mathematics", category:"Olympiad Strategy", author:"Editorial Team", date:"2026-05-18", readTime:8,
+    excerpt:"Ninety days is enough time to move a full difficulty tier if the plan has three distinct phases instead of one long grind.",
+    body:["A common mistake is treating 90 days as one undifferentiated block of practice. It works far better as three phases: a diagnostic and foundations phase (roughly 3 weeks), a topic-depth phase (roughly 6 weeks), and a simulation phase (the final 3 weeks).","In the foundations phase, take one full mock exam cold to identify your weakest two or three topics — resist the urge to skip this because it feels discouraging. The topic-depth phase should allocate roughly 60% of practice time to those weak areas while maintaining light contact with your strengths.","The final simulation phase should almost entirely consist of full timed mock exams under real conditions, with careful post-mortems rather than new content."] },
+  { slug:"reading-a-physics-problem", title:"How to Read a Physics Problem Before Solving It", subject:"physics", category:"Problem Solving", author:"Editorial Team", date:"2026-04-30", readTime:5,
+    excerpt:"The highest-leverage sixty seconds of any physics problem happen before you write a single equation.",
+    body:["Strong problem solvers spend the first minute doing something that looks like nothing: identifying the system, listing what's conserved, and sketching the geometry. Weaker solvers start writing equations from the first sentence, which often locks them into the wrong frame.","Before touching algebra, ask three questions: what quantity is conserved or changing steadily, what does the geometry force to be true, and what limiting case would make the answer obvious. That third question — the limiting case — is one of the most underused checks in physics olympiad problem solving.","Once you have answers to those three questions, the equations you need are usually obvious, and you write far fewer wrong ones."] },
+  { slug:"organic-mechanism-patterns", title:"Six Mechanism Patterns That Cover Most Organic Chemistry Problems", subject:"chemistry", category:"Concepts", author:"Editorial Team", date:"2026-04-12", readTime:9,
+    excerpt:"Organic chemistry looks infinite until you notice that most olympiad mechanisms are variations on a small number of patterns.",
+    body:["Students often treat every organic mechanism as a new thing to memorise. In practice, the overwhelming majority of olympiad-level mechanism questions draw from six recurring patterns: nucleophilic substitution, elimination, electrophilic addition, nucleophilic addition to carbonyls, electrophilic aromatic substitution, and radical chain reactions.","Rather than memorising hundreds of individual reactions, build a one-page reference for each pattern: what makes a good nucleophile or electrophile in that context, what the rate-determining step looks like, and what stereochemical outcome to expect.","When you hit an unfamiliar reaction on an exam, the fastest path to a partial-credit answer is asking which of the six patterns it most resembles, then adapting from there."] },
+  { slug:"genetics-crosses-fast", title:"Solving Genetics Crosses Fast Under Time Pressure", subject:"biology", category:"Problem Solving", author:"Editorial Team", date:"2026-03-22", readTime:7,
+    excerpt:"Punnett squares work, but they're slow. Here's the shortcut notation top biology olympiad students actually use in-exam.",
+    body:["A full Punnett square for a trihybrid cross has 64 cells — nobody draws that under time pressure. Instead, treat each gene independently using the product rule, then multiply probabilities for the specific genotype or phenotype combination you need.","For linked genes, skip the square entirely and reason directly from recombination frequency: a gene pair 12 map units apart produces 12% recombinant gametes, split evenly between the two recombinant classes.","Practicing this notation on twenty short problems is far more valuable before an exam than working three enormous multi-gene Punnett squares by hand."] },
+  { slug:"competitive-programming-io", title:"The Most Common IO-Handling Mistakes in Competitive Programming", subject:"computer-science", category:"Programming", author:"Editorial Team", date:"2026-03-05", readTime:6,
+    excerpt:"A correct algorithm with a broken input parser still scores zero. Here's what trips up strong programmers under contest pressure.",
+    body:["Judges are unforgiving about format. The single most common cause of an unexpected wrong-answer verdict on an otherwise-correct solution is mishandling input format edge cases — trailing whitespace, multiple test cases per file, or unspecified upper bounds on array size.","Before writing any algorithm, write and test your input parser against the exact sample input, including boundary cases like n = 0 or n = 1 explicitly, even if the problem statement seems to imply they won't occur.","Keep a small personal library of tested IO templates for your language of choice — fast IO for C++, buffered readers for Python — and reuse them rather than rewriting boilerplate under time pressure."] },
+  { slug:"observational-astronomy-basics", title:"What to Actually Practice for Observational Astronomy Rounds", subject:"astronomy", category:"Exam Strategy", author:"Editorial Team", date:"2026-02-14", readTime:6,
+    excerpt:"Observational rounds reward specific, practiced skills — not general astronomy knowledge.",
+    body:["Observational astronomy rounds surprise students who prepared only theory, because the skills tested are narrow and mechanical: star-hopping with a planisphere, estimating angular separation by eye, and reading a telescope's setting circles quickly and accurately.","The highest-leverage practice is repetition with real or simulated star charts under a time limit, not additional theoretical reading. Aim to identify twenty bright reference stars and their approximate coordinates from memory.","Practice converting between altitude-azimuth and equatorial coordinates by hand at least until it's automatic — this single skill recovers the most points under exam time pressure."] },
+  { slug:"reading-a-weather-map", title:"Reading a Synoptic Weather Map Like an Earth Science Olympiad Judge", subject:"earth-science", category:"Concepts", author:"Editorial Team", date:"2026-01-27", readTime:5,
+    excerpt:"A synoptic chart looks dense until you know the four things a judge actually wants you to identify first.",
+    body:["Faced with a synoptic weather chart for the first time, most students try to read every isobar and front simultaneously. Judges are usually testing four specific skills: locating pressure systems, identifying front types, estimating wind direction from isobar spacing, and predicting near-term weather change.","Work the chart in that fixed order every time, rather than jumping around. Locate highs and lows first, then trace fronts, then infer wind direction using the geostrophic approximation, and only then attempt a forecast statement.","This fixed sequence turns a dense, intimidating chart into a five-minute mechanical exercise instead of an open-ended reading task."] },
+];
+
+const SOO_RESOURCES = [
+  { slug:"imo-formula-sheet", title:"Olympiad Geometry Formula Sheet", subject:"mathematics", type:"Formula Sheet", level:"Advanced", year:2026, language:"English", pages:6,
+    desc:"A condensed reference covering triangle centers, circle theorems, trigonometric identities and common lemmas used across IMO-style geometry problems." },
+  { slug:"ipho-experimental-guide", title:"Experimental Physics Lab Guide", subject:"physics", type:"Lab Guide", level:"Advanced", year:2025, language:"English", pages:24,
+    desc:"Uncertainty propagation, curve fitting and apparatus-handling conventions expected in IPhO-style practical exams." },
+  { slug:"icho-past-papers-2024", title:"IChO 2024 Official Past Paper Set", subject:"chemistry", type:"Past Paper", level:"Advanced", year:2024, language:"English", pages:38,
+    desc:"Complete theoretical and practical examination papers from the 2024 International Chemistry Olympiad, with official marking schemes." },
+  { slug:"genetics-cheat-sheet", title:"Classical & Molecular Genetics Cheat Sheet", subject:"biology", type:"Cheat Sheet", level:"Intermediate", year:2026, language:"English", pages:4,
+    desc:"One-page reference for Mendelian ratios, linkage mapping, and molecular genetics vocabulary for competition use." },
+  { slug:"cp-algorithm-templates", title:"Competitive Programming Algorithm Templates", subject:"computer-science", type:"Reference", level:"Advanced", year:2026, language:"English", pages:19,
+    desc:"Tested C++ templates for segment trees, Fenwick trees, graph traversal, and common dynamic-programming patterns." },
+  { slug:"astro-coordinate-systems", title:"Coordinate Systems in Observational Astronomy", subject:"astronomy", type:"Study Guide", level:"Intermediate", year:2025, language:"English", pages:9,
+    desc:"Working conversions between horizontal, equatorial and ecliptic coordinate systems with worked examples." },
+  { slug:"synoptic-map-symbols", title:"Synoptic Map Symbol Reference", subject:"earth-science", type:"Reference", level:"Beginner", year:2025, language:"English", pages:3,
+    desc:"Standard WMO symbols for fronts, pressure systems and station models used in earth science olympiad map questions." },
+  { slug:"pid-tuning-notes", title:"PID Tuning Field Notes for Robotics Teams", subject:"engineering", type:"Notes", level:"Intermediate", year:2026, language:"English", pages:7,
+    desc:"Practical tuning heuristics for drivetrain and arm control loops used by competitive robotics teams." },
+  { slug:"ml-competition-starter", title:"Applied ML Competition Starter Kit", subject:"ai-data-science", type:"Reference", level:"Intermediate", year:2026, language:"English", pages:12,
+    desc:"Baseline modelling workflow, validation strategy and common pitfalls for data-driven research competitions." },
+];
+
+const SOO_ROADMAPS = [
+  { slug:"beginner-to-olympiad-math", title:"Beginner to Olympiad — Mathematics", subject:"mathematics", duration:"6 months", level:"Beginner start",
+    desc:"A structured path from standard curriculum mathematics to olympiad-level proof writing.",
+    milestones:["Master core algebra & number sense","Learn olympiad proof techniques (induction, contradiction, pigeonhole)","Topic-depth: number theory & combinatorics","Topic-depth: geometry & inequalities","Full mock exam cycle","National-level simulation"] },
+  { slug:"30-day-sprint", title:"30-Day Pre-Exam Sprint", subject:"mathematics", duration:"30 days", level:"Any level",
+    desc:"A short, intense revision cycle for students with an exam already scheduled.",
+    milestones:["Diagnostic mock + weak-area report","Days 2–20: targeted weak-topic drilling","Days 21–27: mixed timed practice sets","Days 28–30: full simulations + review"] },
+  { slug:"ipho-prep", title:"IPhO Preparation Roadmap", subject:"physics", duration:"Full year", level:"National team candidates",
+    desc:"A full preparation cycle from national olympiad qualification through international team training.",
+    milestones:["Mechanics & thermodynamics depth","Electromagnetism depth","Modern physics & relativity","Experimental technique bootcamp","Past-paper simulation block","Final team training camp"] },
+  { slug:"icho-prep", title:"IChO Preparation Roadmap", subject:"chemistry", duration:"Full year", level:"National team candidates",
+    desc:"Theory and practical-lab preparation aligned with the official IChO syllabus.",
+    milestones:["General & physical chemistry depth","Organic mechanism mastery","Analytical & spectroscopy training","Practical lab technique bootcamp","Timed theory simulations","Final camp & practical mock exam"] },
+  { slug:"ibo-prep", title:"IBO Preparation Roadmap", subject:"biology", duration:"Full year", level:"National team candidates",
+    desc:"Coverage of the four core IBO domains with a practical-skills track.",
+    milestones:["Cell & molecular biology depth","Genetics & evolution depth","Physiology depth","Ecology & systematics depth","Practical/lab skills bootcamp","Full simulation block"] },
+  { slug:"ioi-prep", title:"IOI Preparation Roadmap", subject:"computer-science", duration:"Full year", level:"National team candidates",
+    desc:"Algorithmic depth building toward international contest performance.",
+    milestones:["Core data structures mastery","Graph algorithms depth","Dynamic programming depth","Advanced topics (flows, geometry, strings)","Weekly rated contest practice","Final contest simulation block"] },
+  { slug:"astronomy-prep", title:"Astronomy Olympiad Preparation", subject:"astronomy", duration:"4 months", level:"National level",
+    desc:"Theory, data-analysis and observational skill preparation for astronomy competitions.",
+    milestones:["Celestial mechanics & astrophysics depth","Data analysis technique training","Observational skill drills","Full simulation rounds"] },
+  { slug:"60-day-plan", title:"60-Day Preparation Plan", subject:"mathematics", duration:"60 days", level:"Any level",
+    desc:"A balanced middle-length plan between the 30-day sprint and full 90-day cycle.",
+    milestones:["Diagnostic + foundations (2 weeks)","Topic-depth practice (5 weeks)","Simulation & review (1 week)"] },
+];
+
+const SOO_ACHIEVEMENTS = [
+  { id:"first-question", name:"First Question", desc:"Solved your first practice question.", icon:"flag" },
+  { id:"ten-questions", name:"10 Questions", desc:"Solved 10 questions across any subject.", icon:"flag" },
+  { id:"hundred-questions", name:"100 Questions", desc:"Solved 100 questions — a real body of practice.", icon:"target" },
+  { id:"five-hundred", name:"500 Questions", desc:"Solved 500 questions. Serious consistency.", icon:"target" },
+  { id:"perfect-test", name:"Perfect Test", desc:"Scored 100% on a full custom test.", icon:"medal" },
+  { id:"streak-7", name:"7-Day Streak", desc:"Practiced seven days in a row.", icon:"flame" },
+  { id:"streak-30", name:"30-Day Streak", desc:"Practiced thirty days in a row.", icon:"flame" },
+  { id:"topic-master", name:"Topic Master", desc:"Reached 90%+ mastery in a topic.", icon:"star" },
+  { id:"speed-solver", name:"Speed Solver", desc:"Solved 20 questions under target time.", icon:"bolt" },
+  { id:"competition-specialist", name:"Competition Specialist", desc:"Completed a full competition-specific practice set.", icon:"medal" },
+  { id:"multi-subject", name:"Multi-Subject Explorer", desc:"Practiced questions across 5+ subjects.", icon:"compass" },
+];
+
+const SOO_TESTIMONIALS = [
+  { name:"Amara O.", role:"IChO 2025 Gold Medalist", quote:"Weak-area practice found gaps in electrochemistry I didn't know I had, three months before the exam that actually mattered.", subject:"chemistry" },
+  { name:"Daniyar K.", role:"National Physics Team, Kazakhstan", quote:"The exam-simulation mode is the closest thing to real IPhO timing pressure I found anywhere online.", subject:"physics" },
+  { name:"Priya S.", role:"IOI 2025 Participant", quote:"Having algorithms practice and past IOI problems in one searchable place cut my prep planning time in half.", subject:"computer-science" },
+  { name:"Lucas M.", role:"EGMO Camp Trainee", quote:"The topic-mastery chart made it obvious I was avoiding combinatorics. I wasn't avoiding it anymore after that.", subject:"mathematics" },
+  { name:"Wren T.", role:"Regional Biology Olympiad Finalist", quote:"Short, targeted articles on exam technique mattered almost as much as the question bank itself.", subject:"biology" },
+];
+
+const SOO_LEADERBOARD = [
+  { rank:1, name:"quantum_fox", country:"KZ", solved:2318, accuracy:94, subject:"physics" },
+  { rank:2, name:"epsilon_delta", country:"RO", solved:2201, accuracy:96, subject:"mathematics" },
+  { rank:3, name:"orbital_mango", country:"IN", solved:2140, accuracy:91, subject:"astronomy" },
+  { rank:4, name:"titrate_this", country:"SG", solved:2088, accuracy:93, subject:"chemistry" },
+  { rank:5, name:"greedy_algo", country:"PL", solved:1975, accuracy:89, subject:"computer-science" },
+  { rank:6, name:"cell_cycle_z", country:"BR", solved:1902, accuracy:90, subject:"biology" },
+  { rank:7, name:"lagrangian_pt", country:"US", solved:1877, accuracy:88, subject:"physics" },
+  { rank:8, name:"prime_hunter_9", country:"VN", solved:1834, accuracy:95, subject:"mathematics" },
+  { rank:9, name:"synoptic_sam", country:"CA", solved:1690, accuracy:87, subject:"earth-science" },
+  { rank:10, name:"pid_loopz", country:"DE", solved:1602, accuracy:85, subject:"engineering" },
+];
+
+const SOO_STATS = { questions:11065, competitions:74, subjects:9, practiceSets:312, resources:9, students:48200 };
+
+/* ---------- Accessors ---------- */
+const SOO = {
+  subjects: SOO_SUBJECTS,
+  competitions: SOO_COMPETITIONS,
+  questions: SOO_QUESTIONS,
+  articles: SOO_ARTICLES,
+  resources: SOO_RESOURCES,
+  roadmaps: SOO_ROADMAPS,
+  achievements: SOO_ACHIEVEMENTS,
+  testimonials: SOO_TESTIMONIALS,
+  leaderboard: SOO_LEADERBOARD,
+  stats: SOO_STATS,
+  subject(slug){ return SOO_SUBJECTS.find(s=>s.slug===slug); },
+  competition(slug){ return SOO_COMPETITIONS.find(c=>c.slug===slug); },
+  question(id){ return SOO_QUESTIONS.find(q=>q.id===id); },
+  article(slug){ return SOO_ARTICLES.find(a=>a.slug===slug); },
+  resource(slug){ return SOO_RESOURCES.find(r=>r.slug===slug); },
+  roadmap(slug){ return SOO_ROADMAPS.find(r=>r.slug===slug); },
+  competitionsBySubject(slug){ return SOO_COMPETITIONS.filter(c=>c.subject===slug); },
+  questionsBySubject(slug){ return SOO_QUESTIONS.filter(q=>q.subject===slug); },
+  difficultyLabel(n){ return ["","Very Easy","Easy","Medium","Hard","Very Hard"][n] || "Medium"; },
+};
+
+</script>
+<script>
+/* ======================================================================
+   SCHOOL OF OLYMPIAD — APP SHELL
+   Renders the shared header/footer, theme handling, mobile drawer and
+   small interaction helpers reused across every page.
+   ====================================================================== */
+
+const SOO_ICONS = {
+  sigma:'<path d="M6 5h11l-6 7 6 7H6l5-7z"/>',
+  atom:'<circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9" ry="3.6"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9" ry="3.6" transform="rotate(120 12 12)"/>',
+  flask:'<path d="M9 3h6M10 3v6l-5.5 9.5A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.5L14 9V3"/><path d="M7.5 15h9"/>',
+  leaf:'<path d="M5 20c9 0 14-5 14-14 0 0-9-1-14 4-3 3-3 7 0 10z"/><path d="M5 20c3-6 6-9 12-13"/>',
+  code:'<path d="M8 8 3 12l5 4M16 8l5 4-5 4M14 4 10 20"/>',
+  star:'<path d="M12 3l2.6 5.9 6.4.6-4.8 4.3 1.4 6.2L12 16.9 6.4 20l1.4-6.2-4.8-4.3 6.4-.6z"/>',
+  globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 2.6 4.2 5.7 4.2 9s-1.4 6.4-4.2 9c-2.8-2.6-4.2-5.7-4.2-9S9.2 5.6 12 3z"/>',
+  gear:'<circle cx="12" cy="12" r="3.2"/><path d="M12 3v2.4M12 18.6V21M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M3 12h2.4M18.6 12H21M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/>',
+  cpu:'<rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5"/><path d="M9 3v2.5M15 3v2.5M9 18.5V21M15 18.5V21M3 9h2.5M3 15h2.5M18.5 9H21M18.5 15H21"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
+  sun:'<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/>',
+  moon:'<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4 6.8 6.8 0 0 0 20 14.5z"/>',
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  bell:'<path d="M7 9a5 5 0 0 1 10 0c0 5 2 6 2 6H5s2-1 2-6z"/><path d="M10 19a2 2 0 0 0 4 0"/>',
+  user:'<circle cx="12" cy="8.5" r="3.4"/><path d="M4.5 20c1.6-3.6 4.5-5.4 7.5-5.4S17.9 16.4 19.5 20"/>',
+  chevronRight:'<path d="M9 5l7 7-7 7"/>',
+  chevronDown:'<path d="M5 9l7 7 7-7"/>',
+  bookmark:'<path d="M7 3.5h10a1 1 0 0 1 1 1V21l-6-4-6 4V4.5a1 1 0 0 1 1-1z"/>',
+  flag:'<path d="M6 3v18"/><path d="M6 4h11l-2.5 4L17 12H6"/>',
+  target:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>',
+  medal:'<circle cx="12" cy="14.5" r="6"/><path d="M9.5 9.4 7 3h2.4l2.6 5.4M14.5 9.4 17 3h-2.4l-2.6 5.4"/><path d="M12 11.3v6.4"/>',
+  flame:'<path d="M12 2.5s5 4.7 5 9.7a5 5 0 0 1-10 0c0-1.7 1-2.7 1.6-3.6.4 1 1.3 1.3 1.8.7-.6-3 1.1-5.2 1.6-6.8z"/>',
+  bolt:'<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>',
+  compass:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.8 13.8 8.5 15.5l1.7-5.3z"/>',
+  home:'<path d="M4 11.5 12 4l8 7.5"/><path d="M6 10v10h12V10"/>',
+  book:'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15.5H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M20 18.5H6.5A2.5 2.5 0 0 0 4 21"/>',
+  trophy:'<path d="M8 4h8v6a4 4 0 0 1-8 0z"/><path d="M8 5H5a3 3 0 0 0 3 5M16 5h3a3 3 0 0 1-3 5"/><path d="M12 14v3M9 20h6M9.5 17h5l.5 3h-6z"/>',
+  layout:'<rect x="3.5" y="4" width="17" height="16" rx="1.5"/><path d="M3.5 9.5h17M9 9.5V20"/>',
+  check:'<path d="M5 13l4.5 4.5L19 7"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+  arrowRight:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  filter:'<path d="M4 5h16M7 12h10M10 19h4"/>',
+  download:'<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 19h16"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  upload:'<path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 4h16"/>',
+  lock:'<rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/>',
+  mail:'<rect x="3.5" y="5.5" width="17" height="13" rx="1.5"/><path d="M4 6.5l8 6.5 8-6.5"/>',
+  external:'<path d="M14 5h5v5"/><path d="M19 5 10 14"/><path d="M9 5H5v14h14v-4"/>',
+  play:'<path d="M7 4.5 19 12 7 19.5z"/>',
+  timer:'<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M9.5 2.5h5"/>',
+  refresh:'<path d="M4 12a8 8 0 0 1 13.7-5.7L20 8.5"/><path d="M20 4v4.5h-4.5"/><path d="M20 12a8 8 0 0 1-13.7 5.7L4 15.5"/><path d="M4 20v-4.5h4.5"/>',
+  shuffle:'<path d="M4 6h3.5L15 18h5"/><path d="M17 4l3 2-3 2M4 18h3.5L11 12"/><path d="M17 20l3-2-3-2"/>',
+  edit:'<path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17z"/>',
+  trash:'<path d="M5 7h14M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M7 7l1 13h8l1-13"/>',
+  users:'<circle cx="8.5" cy="8" r="3"/><circle cx="16" cy="9.5" r="2.4"/><path d="M3 20c.7-3.4 3-5 5.5-5s4.8 1.6 5.5 5"/><path d="M14.5 15.3c2 .2 3.7 1.7 4.3 4.7"/>',
+  eye:'<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/>',
+};
+function icon(name, cls){ return `<svg class="icon ${cls||''}" viewBox="0 0 24 24">${SOO_ICONS[name]||''}</svg>`; }
+
+const SOO_NAV = [
+  { label:"Subjects", href:"subjects.html" },
+  { label:"Competitions", href:"competitions.html" },
+  { label:"Questions", href:"questions.html" },
+  { label:"Practice", href:"practice.html" },
+  { label:"Tests", href:"test-builder.html" },
+  { label:"Resources", href:"resources.html" },
+  { label:"Articles", href:"articles.html" },
+  { label:"Rankings", href:"rankings.html" },
+  { label:"Dashboard", href:"dashboard.html" },
+];
+const SOO_MOBILE_EXTRA = [
+  { label:"About", href:"about.html" },
+  { label:"FAQ", href:"faq.html" },
+  { label:"Profile", href:"profile.html" },
+  { label:"Sign in", href:"login.html" },
+];
+
+function sooBrandMark(){
+  return `<svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+    <circle cx="16" cy="16" r="10.5" fill="none" stroke="var(--gold)" stroke-width="1.6"/>
+    <circle cx="16" cy="5.3" r="2" fill="var(--gold)"/>
+    <path d="M11 16.6l3.3 3.3 6.6-7.4" fill="none" stroke="var(--cobalt)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+function renderHeader(active){
+  const links = SOO_NAV.map(n=>`<a href="${n.href}" class="${active===n.href?'active':''}">${n.label}</a>`).join('');
+  const header = document.getElementById('site-header');
+  if(!header) return;
+  header.innerHTML = `
+  <div class="container">
+    <a href="index.html" class="brand">${sooBrandMark()}<span>School of Olympiad<small>STEM Competition Prep</small></span></a>
+    <nav class="nav-desktop" aria-label="Primary">${links}</nav>
+    <div class="header-actions">
+      <button class="btn-icon hide-mobile" id="btn-search" aria-label="Search" title="Search">${icon('search')}</button>
+      <button class="btn-icon hide-mobile" id="btn-notif" aria-label="Notifications" title="Notifications">${icon('bell')}</button>
+      <button class="btn-icon" id="btn-theme" aria-label="Toggle theme" title="Toggle theme">${icon('moon')}</button>
+      <div class="divider hide-mobile"></div>
+      <a href="profile.html" class="btn-icon hide-mobile" aria-label="Profile" title="Profile">${icon('user')}</a>
+      <a href="login.html" class="btn btn-primary btn-sm hide-mobile">Sign in</a>
+      <button class="btn-icon mobile-toggle" id="btn-mobile-menu" aria-label="Open menu">${icon('menu')}</button>
+    </div>
+  </div>`;
+
+  const drawer = document.createElement('div');
+  drawer.className = 'mobile-drawer';
+  drawer.id = 'mobile-drawer';
+  const allLinks = [{label:"Home",href:"index.html"}, ...SOO_NAV, ...SOO_MOBILE_EXTRA];
+  drawer.innerHTML = `<div class="scrim" id="drawer-scrim"></div>
+    <div class="panel">
+      <div class="flex justify-between items-center mb-4">
+        <a href="index.html" class="brand">${sooBrandMark()}<span>School of Olympiad</span></a>
+        <button class="btn-icon" id="drawer-close" aria-label="Close menu">${icon('x')}</button>
+      </div>
+      ${allLinks.map(l=>`<a class="drawer-link" href="${l.href}">${l.label}${icon('chevronRight')}</a>`).join('')}
+    </div>`;
+  document.body.appendChild(drawer);
+
+  const bottomNav = document.createElement('nav');
+  bottomNav.className = 'bottom-nav';
+  bottomNav.setAttribute('aria-label','Quick navigation');
+  const bn = [
+    { label:"Home", href:"index.html", icon:"home" },
+    { label:"Practice", href:"practice.html", icon:"target" },
+    { label:"Questions", href:"questions.html", icon:"book" },
+    { label:"Tests", href:"test-builder.html", icon:"layout" },
+    { label:"Dashboard", href:"dashboard.html", icon:"user" },
+  ];
+  bottomNav.innerHTML = bn.map(l=>`<a href="${l.href}" class="${active===l.href?'active':''}">${icon(l.icon)}${l.label}</a>`).join('');
+  document.body.appendChild(bottomNav);
+
+  document.getElementById('btn-mobile-menu').addEventListener('click',()=>drawer.classList.add('open'));
+  document.getElementById('drawer-close').addEventListener('click',()=>drawer.classList.remove('open'));
+  document.getElementById('drawer-scrim').addEventListener('click',()=>drawer.classList.remove('open'));
+  const searchBtn = document.getElementById('btn-search');
+  if(searchBtn) searchBtn.addEventListener('click', openSearchOverlay);
+  const notifBtn = document.getElementById('btn-notif');
+  if(notifBtn) notifBtn.addEventListener('click', openNotifOverlay);
+}
+
+function renderFooter(){
+  const footer = document.getElementById('site-footer');
+  if(!footer) return;
+  footer.innerHTML = `
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="brand">${sooBrandMark()}<span>School of Olympiad</span></a>
+        <p class="text-mute text-sm mt-3" style="max-width:280px;">One question database, one dashboard, one path — for every STEM olympiad and competition, from your first practice set to the international stage.</p>
+      </div>
+      <div>
+        <h5>Platform</h5>
+        <a href="index.html">Home</a><a href="subjects.html">Subjects</a><a href="competitions.html">Competitions</a>
+        <a href="questions.html">Questions</a><a href="practice.html">Practice</a><a href="test-builder.html">Tests</a>
+        <a href="resources.html">Resources</a><a href="articles.html">Articles</a>
+      </div>
+      <div>
+        <h5>Community</h5>
+        <a href="rankings.html">Rankings</a><a href="achievements.html">Achievements</a>
+        <a href="about.html">About</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookie Policy</a><a href="content-policy.html">Content Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 School of Olympiad. All rights reserved.</span>
+      <div class="flex gap-3 items-center">
+        <span class="badge">EN — English</span>
+        <a href="#" aria-label="X">${icon('external','')}</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- Theme ---------- */
+function initTheme(){
+  const root = document.documentElement;
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+  updateThemeIcon();
+  document.addEventListener('click', (e)=>{
+    if(e.target.closest('#btn-theme')){
+      const cur = root.getAttribute('data-theme');
+      root.setAttribute('data-theme', cur==='dark' ? 'light' : 'dark');
+      updateThemeIcon();
+    }
+  });
+}
+function updateThemeIcon(){
+  const btn = document.getElementById('btn-theme');
+  if(!btn) return;
+  const isDark = document.documentElement.getAttribute('data-theme')==='dark';
+  btn.innerHTML = icon(isDark ? 'sun' : 'moon');
+}
+
+/* ---------- Toast ---------- */
+function sooToast(msg, iconName){
+  let wrap = document.querySelector('.toast-wrap');
+  if(!wrap){ wrap = document.createElement('div'); wrap.className='toast-wrap'; document.body.appendChild(wrap); }
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.innerHTML = `${icon(iconName||'check')}<span>${msg}</span>`;
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transition='opacity .25s ease'; setTimeout(()=>t.remove(),260); }, 2600);
+}
+
+/* ---------- Global search overlay ---------- */
+function openSearchOverlay(){
+  let scrim = document.getElementById('search-scrim');
+  if(scrim){ scrim.classList.add('open'); scrim.querySelector('input').focus(); return; }
+  scrim = document.createElement('div');
+  scrim.className = 'modal-scrim open';
+  scrim.id = 'search-scrim';
+  scrim.innerHTML = `<div class="modal-box" style="max-width:600px; text-align:left;">
+    <div class="flex items-center gap-3" style="border:1px solid var(--line); border-radius:10px; padding:10px 14px;">
+      ${icon('search','text-mute')}
+      <input type="search" id="global-search-input" placeholder="Search questions, competitions, subjects, articles…" style="border:none; padding:4px 0;">
+      <button class="btn-icon" id="search-close">${icon('x')}</button>
+    </div>
+    <div id="search-results" class="mt-4" style="max-height:360px; overflow-y:auto;"></div>
+  </div>`;
+  document.body.appendChild(scrim);
+  scrim.addEventListener('click', e=>{ if(e.target===scrim) scrim.classList.remove('open'); });
+  scrim.querySelector('#search-close').addEventListener('click',()=>scrim.classList.remove('open'));
+  scrim.querySelector('#global-search-input').addEventListener('input', e=>runGlobalSearch(e.target.value));
+  runGlobalSearch('');
+  setTimeout(()=>scrim.querySelector('input').focus(),50);
+}
+function runGlobalSearch(q){
+  const res = document.getElementById('search-results');
+  if(!res) return;
+  q = (q||'').trim().toLowerCase();
+  if(!q){ res.innerHTML = `<p class="text-mute text-sm">Try “thermodynamics”, “IMO”, or “genetics”.</p>`; return; }
+  const hits = [];
+  SOO.subjects.filter(s=>s.name.toLowerCase().includes(q)).forEach(s=>hits.push({type:'Subject',label:s.name,href:`subjects.html#${s.slug}`}));
+  SOO.competitions.filter(c=>c.name.toLowerCase().includes(q)||c.short.toLowerCase().includes(q)).forEach(c=>hits.push({type:'Competition',label:c.name,href:`competition-detail.html?slug=${c.slug}`}));
+  SOO.questions.filter(q2=>q2.title.toLowerCase().includes(q)||q2.topic.toLowerCase().includes(q)).forEach(q2=>hits.push({type:'Question',label:q2.title,href:`question-detail.html?id=${q2.id}`}));
+  SOO.articles.filter(a=>a.title.toLowerCase().includes(q)).forEach(a=>hits.push({type:'Article',label:a.title,href:`article-detail.html?slug=${a.slug}`}));
+  SOO.resources.filter(r=>r.title.toLowerCase().includes(q)).forEach(r=>hits.push({type:'Resource',label:r.title,href:`resource-detail.html?slug=${r.slug}`}));
+  if(!hits.length){ res.innerHTML = `<p class="text-mute text-sm">No results for “${q}”. Try a different term.</p>`; return; }
+  res.innerHTML = hits.slice(0,10).map(h=>`<a href="${h.href}" class="flex items-center justify-between" style="padding:11px 6px; border-bottom:1px solid var(--line-soft);">
+    <span class="text-sm">${h.label}</span><span class="badge">${h.type}</span></a>`).join('');
+}
+
+function openNotifOverlay(){
+  let scrim = document.getElementById('notif-scrim');
+  if(scrim){ scrim.classList.add('open'); return; }
+  scrim = document.createElement('div');
+  scrim.className = 'modal-scrim open';
+  scrim.id = 'notif-scrim';
+  const items = [
+    {icon:'flame', text:'Your 5-day streak is waiting — today\'s challenge is live.'},
+    {icon:'medal', text:'Achievement unlocked: Speed Solver.'},
+    {icon:'flag', text:'IChO registration closes in 12 days.'},
+    {icon:'book', text:'New article: “Six Mechanism Patterns for Organic Chemistry.”'},
+    {icon:'target', text:'Recommended: 8 weak-area questions in Rotational Dynamics.'},
+  ];
+  scrim.innerHTML = `<div class="modal-box" style="max-width:420px; text-align:left;">
+    <div class="flex items-center justify-between mb-4">
+      <h3 style="font-size:18px;">Notifications</h3>
+      <button class="btn-icon" id="notif-close">${icon('x')}</button>
+    </div>
+    <div class="flex" style="flex-direction:column; gap:2px;">
+      ${items.map(i=>`<div class="flex gap-3 items-center" style="padding:11px 4px; border-bottom:1px solid var(--line-soft);">
+        <span style="color:var(--gold);">${icon(i.icon)}</span><span class="text-sm">${i.text}</span></div>`).join('')}
+    </div>
+  </div>`;
+  document.body.appendChild(scrim);
+  scrim.addEventListener('click', e=>{ if(e.target===scrim) scrim.classList.remove('open'); });
+  scrim.querySelector('#notif-close').addEventListener('click',()=>scrim.classList.remove('open'));
+}
+
+/* ---------- Helpers ---------- */
+function qs(name){ return new URLSearchParams(window.location.search).get(name); }
+function initAccordions(root){
+  (root||document).querySelectorAll('.accordion-trigger').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+}
+function initTabs(root, onChange){
+  (root||document).querySelectorAll('.tabs').forEach(tabbar=>{
+    tabbar.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click', ()=>{
+        tabbar.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        if(onChange) onChange(tab.dataset.tab, tabbar);
+      });
+    });
+  });
+}
+function animateCount(el, target, suffix){
+  const dur = 900; const start = performance.now();
+  function step(t){
+    const p = Math.min(1,(t-start)/dur);
+    const eased = 1-Math.pow(1-p,3);
+    el.textContent = Math.round(eased*target).toLocaleString() + (suffix||'');
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+document.addEventListener('DOMContentLoaded', initTheme);
+
+</script>
+<script>
+renderHeader('dashboard.html');
+renderFooter();
+let subjFilter='all';
+document.getElementById('rm-filter').innerHTML = `<div class="select-pill active" data-s="all">All subjects</div>` + [...new Set(SOO.roadmaps.map(r=>r.subject))].map(s=>`<div class="select-pill" data-s="${s}">${SOO.subject(s).name}</div>`).join('');
+function render(){
+  const list = SOO.roadmaps.filter(r=>subjFilter==='all'||r.subject===subjFilter);
+  document.getElementById('rm-grid').innerHTML = list.map(r=>{
+    const sub = SOO.subject(r.subject);
+    return `<a href="roadmap-detail.html?slug=${r.slug}" class="card card-hover rm-card">
+      <div class="flex justify-between items-center"><span class="badge badge-gold">${r.duration}</span><span class="subject-chip sc-${sub.slug}">${sub.name}</span></div>
+      <h3>${r.title}</h3><p>${r.desc}</p>
+      <div class="rm-milestones">${r.milestones.slice(0,3).map(m=>`<div>${m}</div>`).join('')}${r.milestones.length>3?`<div style="opacity:.6;">+${r.milestones.length-3} more</div>`:''}</div>
+      <span class="text-xs text-mute">${r.level}</span>
+    </a>`;
+  }).join('');
+}
+document.getElementById('rm-filter').addEventListener('click', e=>{
+  const p = e.target.closest('.select-pill'); if(!p) return;
+  subjFilter = p.dataset.s;
+  [...p.parentElement.children].forEach(c=>c.classList.toggle('active', c===p));
+  render();
+});
+render();
+</script>
+</body>
+</html>
